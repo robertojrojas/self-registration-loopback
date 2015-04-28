@@ -10,7 +10,6 @@ module.exports = function(Subscriber) {
 
   Subscriber.beforeRemote('prototype.updateAttributes', function(ctx, user, next) {
     var body = ctx.req.body;
-    console.log('before updateAttributes...');
     if (body                    &&
         body.preferences        &&
         body.preferences.street &&
@@ -18,7 +17,6 @@ module.exports = function(Subscriber) {
         body.preferences.state ) {
 
       var loc = body.preferences;
-      console.log('preferences present');
 
       // geo code the address
       lookupGeo(loc.street, loc.city, loc.state,
@@ -33,7 +31,6 @@ module.exports = function(Subscriber) {
         });
 
     } else {
-      console.log('NO preferences present');
       next();
     }
 
@@ -43,8 +40,10 @@ module.exports = function(Subscriber) {
   Subscriber.getWeather = function(subscriberId, cb){
     Subscriber.findById(subscriberId, function (err, instance) {
 
-      response = 'Subscriber is ' + instance.username;
-      console.log(response);
+      if (err) {
+        return cb(err);
+      }
+
       if (instance && instance.preferences && instance.preferences.geo) {
         var lat = instance.preferences.geo.lat;
         var lon = instance.preferences.geo.lng;
@@ -70,8 +69,6 @@ module.exports = function(Subscriber) {
         cb(null, {});
       }
 
-
-
     })
   };
 
@@ -80,7 +77,6 @@ module.exports = function(Subscriber) {
     accepts: [
       {arg: 'id', type: 'string', required: true}
     ],
-    // mixing ':id' into the rest url allows $owner to be determined and used for access control
     http: {path: '/:id/weather', verb: 'get'},
     returns: {arg: 'weather', type: 'object'}
   });
