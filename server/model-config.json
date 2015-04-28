@@ -25,5 +25,9 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Subscriber": {
+    "dataSource": "mongoDBDs",
+    "public": true
   }
 }

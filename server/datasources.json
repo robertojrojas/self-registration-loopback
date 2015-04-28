@@ -4,12 +4,12 @@
     "connector": "memory"
   },
   "mongoDBDs": {
-    "name":      "mongoDBDs",
-    "connector": "mongodb",
-    "host":      "localhost",
-    "database":  "SelfRegistration",
-    "username":  "",
-    "password":  "",
-    "port":      27017
+    "host": "localhost",
+    "port": 27017,
+    "database": "SelfRegistration",
+    "username": "",
+    "password": "",
+    "name": "mongoDBDs",
+    "connector": "mongodb"
   }
 }
