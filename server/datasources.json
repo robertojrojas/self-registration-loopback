@@ -39,5 +39,33 @@
         }
       }
     ]
+  },
+  "openweathermap": {
+    "name": "openweathermap",
+    "connector": "rest",
+    "debug": true,
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://api.openweathermap.org/data/2.5/forecast/daily?units=imperial",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "lat": "{lat}",
+            "lon": "{lon}"
+          },
+          "responsePath": "$.list"
+        },
+        "functions": {
+          "getweather": [
+            "lat",
+            "lon"
+          ]
+        }
+      }
+    ]
   }
 }

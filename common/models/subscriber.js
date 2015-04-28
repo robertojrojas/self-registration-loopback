@@ -39,11 +39,39 @@ module.exports = function(Subscriber) {
 
   });
 
+
   Subscriber.getWeather = function(subscriberId, cb){
     Subscriber.findById(subscriberId, function (err, instance) {
+
       response = 'Subscriber is ' + instance.username;
-      cb(null, response);
       console.log(response);
+      if (instance && instance.preferences && instance.preferences.geo) {
+        var lat = instance.preferences.geo.lat;
+        var lon = instance.preferences.geo.lng;
+
+        var openWeatherMap = Subscriber.app.dataSources.openweathermap;
+        openWeatherMap.getweather
+        (
+          lat,
+          lon,
+          function(err, results){
+
+            if (err) {
+              cb(err);
+            } else {
+              console.log(results);
+              cb(null, results);
+            }
+
+          }
+        );
+
+      } else {
+        cb(null, {});
+      }
+
+
+
     })
   };
 
