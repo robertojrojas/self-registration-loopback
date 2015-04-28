@@ -39,4 +39,22 @@ module.exports = function(Subscriber) {
 
   });
 
+  Subscriber.getWeather = function(subscriberId, cb){
+    Subscriber.findById(subscriberId, function (err, instance) {
+      response = 'Subscriber is ' + instance.username;
+      cb(null, response);
+      console.log(response);
+    })
+  };
+
+
+  Subscriber.remoteMethod('getWeather', {
+    accepts: [
+      {arg: 'id', type: 'string', required: true}
+    ],
+    // mixing ':id' into the rest url allows $owner to be determined and used for access control
+    http: {path: '/:id/weather', verb: 'get'},
+    returns: {arg: 'weather', type: 'object'}
+  });
+
 };
