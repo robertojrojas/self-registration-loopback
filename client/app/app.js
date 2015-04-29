@@ -21,7 +21,12 @@
               templateUrl: 'app/preferences/preferences.html',
               controller: 'PreferencesCtrl',
               controllerAs: 'preferencesVm'
-            });
+            })
+            .when('/signup', {
+              templateUrl: 'app/signup/signup.html',
+              controller: 'SignupCtrl',
+              controllerAs: 'signupVm'
+             });
 
 
         $routeProvider.otherwise('/');
