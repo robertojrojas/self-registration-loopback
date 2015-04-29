@@ -1,0 +1,31 @@
+<div ng-controller="ShellCtrl as vm">
+    <div id="adminNavBar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">
+                    <i class="icon-home"></i>
+                    <span>Self Registration LoopBack</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/">Home</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div ng-show="vm.showSpinner" class="page-splash dissolve-animation">
+        <div data-spinner="vm.spinnerOptions"></div>
+        <div class="page-splash-message page-splash-message-subtle">{{vm.spinnerMessage}}</div>
+    </div>
+
+    <div ng-view id="ng-view" class="container slide-animation admin-content"></div>
+
+</div>

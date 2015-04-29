@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>LoopBack</title>
+<!doctype html>
+<html class="no-js" ng-app="selfRegistrationLoopBack">
+<head>
+    <meta charset="utf-8">
+    <title>Self Registration App Using the LoopBack Framework</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/bootstrap.min.css"/>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-<h1>LoopBack Rocks!</h1>
+
+<div id="applicationHost" class="container body-content admin-appHost">
+    <div data-ng-include="'/app/layout/shell.html'"></div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <span class="pull-right text-info credit">Self Registration LoopBack Framework - &copy; Roberto Rojas</span>
+    </div>
+</div>
+
+<!-- Vendor Scripts -->
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script src="lib/lodash/dist/lodash.min.js"></script>
+<script src="lib/moment/min/moment.min.js"></script>
+<script src="lib/spin.js/spin.js"></script>
+
+<!-- inject:js -->
+<script src="app/app.js"></script>
+<script src="app/directives/spinner.directive.js"></script>
+<script src="app/home/home.controller.js"></script>
+<script src="app/layout/shell.controller.js"></script>
+<script src="app/services/app-spinner.service.js"></script>
+<script src="app/services/self-registration-loopback-api.service.js"></script>
+<!-- endinject -->
+
+
 </body>
 </html>
