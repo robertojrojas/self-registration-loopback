@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    angular.module('selfRegistrationLoopBack').controller('SignUpCtrl', SignUpCtrl);
+    angular.module('selfRegistrationLoopBack').controller('LoginCtrl', LoginCtrl);
 
     /* @ngInject */
-    function SignUpCtrl() {
+    function LoginCtrl() {
         /* jshint validthis: true */
         var vm = this;
 

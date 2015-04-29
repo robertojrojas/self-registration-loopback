@@ -26,7 +26,12 @@
               templateUrl: 'app/signup/signup.html',
               controller: 'SignupCtrl',
               controllerAs: 'signupVm'
-             });
+             })
+            .when('/login', {
+              templateUrl: 'app/login/login.html',
+              controller: 'LoginCtrl',
+              controllerAs: 'loginVm'
+            });
 
 
         $routeProvider.otherwise('/');
