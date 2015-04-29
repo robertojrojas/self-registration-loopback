@@ -16,6 +16,11 @@
                 templateUrl: 'app/home/home.html',
                 controller: 'HomeCtrl',
                 controllerAs: 'vm'
+            })
+            .when('/preferences', {
+              templateUrl: 'app/preferences/preferences.html',
+              controller: 'PreferencesCtrl',
+              controllerAs: 'preferencesVm'
             });
 
 
