@@ -4,26 +4,26 @@
 <div class="row-fluid">
   <div class="col-lg-6">
 
-    <form class="form-horizontal jumbotron">
+    <form class="form-horizontal jumbotron" ng-submit="savePreferences()">
       <fieldset>
 
         <legend>Please Enter the Weather Address</legend>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="inputStreet" placeholder="Street">
+            <input type="text" class="form-control" id="inputStreet" placeholder="Street" ng-model="preferencesVm.street">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="inputCity" placeholder="City">
+            <input type="text" class="form-control" id="inputCity" placeholder="City" ng-model="preferencesVm.city">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="inputZipCode" placeholder="ZipCode">
+            <input type="text" class="form-control" id="inputZipCode" placeholder="ZipCode" ng-model="preferencesVm.zipcode">
           </div>
         </div>
 
@@ -32,13 +32,13 @@
           <div class="col-lg-10">
             <div class="radio">
               <label>
-                <input type="radio" name="temperature" id="fahrenheit" value="fahrenheit" checked="">
+                <input type="radio" ng-model="preferencesVm.temperature" name="temperature" id="fahrenheit" value="fahrenheit" checked="">
                 Fahrenheit
               </label>
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="temperature" id="celsius" value="celsius">
+                <input type="radio" ng-model="preferencesVm.temperature" name="temperature" id="celsius" value="celsius">
                 Celsius
               </label>
             </div>

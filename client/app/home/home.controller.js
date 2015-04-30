@@ -1,22 +1,43 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular.module('selfRegistrationLoopBack').controller('HomeCtrl', HomeCtrl);
+  var selfRegistrationLoopBack = angular.module('selfRegistrationLoopBack');
 
-    /* @ngInject */
-    function HomeCtrl() {
-        /* jshint validthis: true */
-        var vm = this;
+  selfRegistrationLoopBack.controller('HomeCtrl', HomeCtrl);
 
-        vm.activate = activate;
+  selfRegistrationLoopBack.$inject =
+    ['appSpinner', 'selfRegistrationLoopBackApi', '$q', '$rootScope', '$state'];
 
-        activate();
+  /* @ngInject */
+  function HomeCtrl($state, selfRegistrationLoopBackApi) {
 
-        ////////////////
+    var vm = this;
 
-        function activate() {
-        }
+    //vm.activate = activate;
+    //
+    //activate();
+    //
+    //////////////////
+    //
+    //function activate() {
+    //}
 
+    vm.getWeather = getWeather;
+
+    vm.getWeather();
+
+    function getWeather() {
+
+      if (vm.currentUser && vm.currentUser.preferences) {
+        selfRegistrationLoopBackApi
+          .getWeather(vm.currentUser)
+          .then(function (weatherData) {
+
+          });
+      }
 
     }
+
+
+  }
 })();

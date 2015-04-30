@@ -1,22 +1,49 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular.module('selfRegistrationLoopBack').controller('SignUpCtrl', SignUpCtrl);
+  var selfRegistrationLoopBack = angular.module('selfRegistrationLoopBack');
 
-    /* @ngInject */
-    function SignUpCtrl() {
-        /* jshint validthis: true */
-        var vm = this;
+  selfRegistrationLoopBack
+    .controller('SignUpCtrl', SignUpCtrl)
+    .controller('AuthLogoutCtrl', AuthLogoutCtrl);
 
-        vm.activate = activate;
+  selfRegistrationLoopBack.$inject =
+    ['appSpinner', 'AuthService', 'Subscriber', '$q', '$rootScope', '$state'];
 
-        activate();
+  /* @ngInject */
+  function SignUpCtrl($state, AuthService) {
 
-        ////////////////
+    var vm = this;
 
-        function activate() {
-        }
+    vm.user = {
+      email: 'foo@bar.com',
+      password: 'foobar'
+    };
 
 
-    }
+    vm.register = function () {
+      AuthService.register(vm.user.email, vm.user.password)
+        .then(function () {
+          $state.transitionTo('home');
+        });
+    };
+
+
+    vm.login = function () {
+      AuthService.login(vm.user.email, vm.user.password)
+        .then(function () {
+          $state.go('home');
+        });
+    };
+
+  }
+
+  function AuthLogoutCtrl(AuthService, $state) {
+    AuthService.logout()
+      .then(function () {
+        $state.go('home');
+      });
+  }
+
+
 })();

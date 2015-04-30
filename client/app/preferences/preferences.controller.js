@@ -1,22 +1,45 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular.module('selfRegistrationLoopBack').controller('PreferencesCtrl', PreferencesCtrl);
+  var selfRegistrationLoopBack = angular.module('selfRegistrationLoopBack');
 
-    /* @ngInject */
-    function PreferencesCtrl() {
-        /* jshint validthis: true */
-        var vm = this;
+  selfRegistrationLoopBack.controller('PreferencesCtrl', PreferencesCtrl);
 
-        vm.activate = activate;
+  selfRegistrationLoopBack.$inject =
+    ['appSpinner', 'selfRegistrationLoopBackApi', '$q', '$rootScope', '$state'];
 
-        activate();
+  /* @ngInject */
+  function PreferencesCtrl(selfRegistrationLoopBackApi) {
+    /* jshint validthis: true */
+    var vm = this;
 
-        ////////////////
+    vm.street      = "";
+    vm.city        = "";
+    vm.zipcode     = "";
+    vm.temperature = "";
 
-        function activate() {
+    vm.savePreferences = savePreferences;
+
+    function savePreferences() {
+        if (vm.street  !== ""  &&
+            vm.city    !== ""  &&
+            vm.zipcode !== "") {
+
+          vm.currentUser['preferences'] = {
+             street:      vm.street,
+             city:        vm.city,
+             zipcode:     vm.zipcode,
+             temperature: vm.temperature
+          }
+
+          selfRegistrationLoopBackApi
+            .savePreferences(vm.currentUser)
+            .then(function(){
+
+            });
         }
-
-
     }
+
+
+  }
 })();

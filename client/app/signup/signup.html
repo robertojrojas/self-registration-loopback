@@ -1,20 +1,20 @@
 <div class="row-fluid">
   <div class="col-lg-6">
 
-    <form class="form-horizontal jumbotron">
+    <form name="loginForm" class="form-horizontal jumbotron" ng-submit="signupVm.login()">
       <fieldset>
 
         <legend>Login Form</legend>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="loginEmail" placeholder="Email">
+            <input type="text" class="form-control" id="loginEmail" placeholder="Email" ng-model="signupVm.user.email">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password" ng-model="signupVm.user.password">
           </div>
         </div>
 
@@ -30,7 +30,7 @@
 
   <div class="col-lg-6">
 
-    <form class="form-horizontal jumbotron">
+    <form name="signUpForm" class="form-horizontal jumbotron">
       <fieldset>
 
         <legend>No Account? No Problem! Just Create one here.</legend>

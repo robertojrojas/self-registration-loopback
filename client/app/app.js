@@ -4,7 +4,8 @@
         // Angular modules
 
         // 3rd Party Modules
-        'ui.router'
+        'ui.router',
+        'lbServices'
 
     ]);
 
