@@ -6,7 +6,7 @@
     .factory('AuthService', AuthService);
 
 
-  selfRegistrationLoopBackApi.$inject = ['$http', 'appSpinner', 'Subscriber', '$q', '$rootScope'];
+  selfRegistrationLoopBackApi.$inject = ['Subscriber', 'appSpinner', '$q', '$rootScope'];
 
   function selfRegistrationLoopBackApi(Subscriber, appSpinner) {
 
@@ -24,6 +24,7 @@
       return Subscriber
         .getWeather(
              {
+               id:      subscriber.id,
                street:  subscriber.preferences.street,
                city:    subscriber.preferences.city,
                zipcode: subscriber.preferences.zipcode
@@ -36,7 +37,19 @@
     }
 
     function savePreferences(subscriber) {
-        return subscriber.$save();
+      return Subscriber
+             .upsert(subscriber)
+             .$promise
+             .then(function(data){
+                console.log(data);
+             });
+      //return Subscriber
+      //      .findById({id: subscriber.id})
+      //      .$promise
+      //      .then(function(theSubscriber){
+      //          theSubscriber.preferences = subscriber.preferences;
+      //          theSubscriber.$save();
+      //      });
     }
 
 
@@ -66,9 +79,10 @@
         });
     }
 
-    function register(email, password) {
+    function register(username, email, password) {
       return Subscriber
         .create({
+          username: username,
           email: email,
           password: password
         })

@@ -8,13 +8,13 @@
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="loginEmail" placeholder="Email" ng-model="signupVm.user.email">
+            <input type="text" class="form-control" id="loginEmail" placeholder="Email" ng-model="signupVm.user.loginEmail">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="password" class="form-control" id="loginPassword" placeholder="Password" ng-model="signupVm.user.password">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password" ng-model="signupVm.user.loginPassword">
           </div>
         </div>
 
@@ -30,32 +30,32 @@
 
   <div class="col-lg-6">
 
-    <form name="signUpForm" class="form-horizontal jumbotron">
+    <form name="signUpForm" class="form-horizontal jumbotron" ng-submit="signupVm.register()">
       <fieldset>
 
         <legend>No Account? No Problem! Just Create one here.</legend>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="singupName" placeholder="Name">
+            <input type="text" class="form-control" id="singupUsername" placeholder="Username" ng-model="signupVm.user.username">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="singupEmail" placeholder="Email">
+            <input type="text" class="form-control" id="singupEmail" placeholder="Email" ng-model="signupVm.user.email">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="password" class="form-control" id="signupPassword" placeholder="Password">
+            <input type="password" class="form-control" id="signupPassword" placeholder="Password" ng-model="signupVm.user.password">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10">
-            <input type="password" class="form-control" id="signupPasswordVerify" placeholder="Password Verify">
+            <input type="password" class="form-control" id="signupPasswordVerify" placeholder="Password Verify" ng-model="signupVm.user.passwordverify">
           </div>
         </div>
 

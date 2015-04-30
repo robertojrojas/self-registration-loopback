@@ -16,13 +16,17 @@
     var vm = this;
 
     vm.user = {
-      email: 'foo@bar.com',
-      password: 'foobar'
+      loginEmail: '',
+      loginPassword: '',
+      username: '',
+      email: '',
+      password: '',
+      passwordverify: ''
     };
 
 
     vm.register = function () {
-      AuthService.register(vm.user.email, vm.user.password)
+      AuthService.register(vm.user.username, vm.user.email, vm.user.password)
         .then(function () {
           $state.transitionTo('home');
         });
@@ -30,7 +34,7 @@
 
 
     vm.login = function () {
-      AuthService.login(vm.user.email, vm.user.password)
+      AuthService.login(vm.user.loginEmail, vm.user.loginPassword)
         .then(function () {
           $state.go('home');
         });

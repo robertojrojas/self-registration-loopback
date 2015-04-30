@@ -23,18 +23,15 @@
               url: '/preferences',
               templateUrl: 'app/preferences/preferences.html',
               controller: 'PreferencesCtrl',
-              controllerAs: 'preferencesVm'
+              controllerAs: 'preferencesVm',
+              authenticate: true
             })
             .state('signup', {
               url: '/signup',
               templateUrl: 'app/signup/signup.html',
               controller: 'SignUpCtrl',
               controllerAs: 'signupVm'
-             })
-            .state('forbidden', {
-              url: '/forbidden',
-              templateUrl: 'views/forbidden.html'
-            });
+             });
       $urlRouterProvider.otherwise('home');
     }
 
@@ -43,7 +40,7 @@
         // redirect to login page if not logged in
         if (next.authenticate && !$rootScope.currentUser) {
           event.preventDefault(); //prevent current page from loading
-          $state.go('forbidden');
+          $state.go('signup');
         }
       });
     }]);
