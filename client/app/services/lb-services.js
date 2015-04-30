@@ -355,7 +355,7 @@ module.factory(
          * </em>
          */
         "upsert": {
-          url: urlBase + "/Subscribers",
+          url: urlBase + "/Subscribers/:id",
           method: "PUT"
         },
 

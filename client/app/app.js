@@ -20,19 +20,23 @@
                 controllerAs: 'vm'
             })
             .state('preferences', {
-              url: '/preferences',
-              templateUrl: 'app/preferences/preferences.html',
-              controller: 'PreferencesCtrl',
-              controllerAs: 'preferencesVm',
-              authenticate: true
+                url: '/preferences',
+                templateUrl: 'app/preferences/preferences.html',
+                controller: 'PreferencesCtrl',
+                controllerAs: 'preferencesVm',
+                authenticate: true
             })
             .state('signup', {
-              url: '/signup',
-              templateUrl: 'app/signup/signup.html',
-              controller: 'SignUpCtrl',
-              controllerAs: 'signupVm'
+                url: '/signup',
+                templateUrl: 'app/signup/signup.html',
+                controller: 'SignUpCtrl',
+                controllerAs: 'signupVm'
+             })
+             .state('logout', {
+                url: '/logout',
+                controller: 'AuthLogoutCtrl'
              });
-      $urlRouterProvider.otherwise('home');
+      $urlRouterProvider.otherwise('/');
     }
 
     app.run(['$rootScope', '$state', function($rootScope, $state) {

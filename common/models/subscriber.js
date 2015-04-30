@@ -10,18 +10,21 @@ module.exports = function(Subscriber) {
 
   Subscriber.beforeRemote('prototype.updateAttributes', function(ctx, user, next) {
     var body = ctx.req.body;
+    console.log('beforeRemote -- prototype.updateAttributes');
     if (body                    &&
         body.preferences        &&
         body.preferences.street &&
         body.preferences.city   &&
-        body.preferences.state ) {
+        body.preferences.zipcode ) {
 
+      console.log('beforeRemote -- got preferences');
       var loc = body.preferences;
 
       // geo code the address
-      lookupGeo(loc.street, loc.city, loc.state,
+      lookupGeo(loc.street, loc.city, loc.zipcode,
         function(err, result) {
            if (result && result[0]) {
+            console.log('beforeRemote -- geo is here :)');
             body.preferences.geo = result[0];
             next();
           } else {

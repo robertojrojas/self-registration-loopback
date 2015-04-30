@@ -20,7 +20,7 @@
 
     vm.savePreferences = savePreferences;
 
-    vm.currentUser = $rootScope.currentUser;
+    vm.currentUser =  $rootScope.currentUser;
 
     function savePreferences() {
         if (vm.street  !== ""  &&
@@ -37,7 +37,7 @@
           selfRegistrationLoopBackApi
             .savePreferences(vm.currentUser)
             .then(function(){
-
+               console.log("Preferences saved!");
             });
         }
     }

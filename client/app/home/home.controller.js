@@ -9,18 +9,11 @@
     ['appSpinner', 'selfRegistrationLoopBackApi', '$q', '$rootScope', '$state'];
 
   /* @ngInject */
-  function HomeCtrl($state, selfRegistrationLoopBackApi) {
+  function HomeCtrl($rootScope, $state, selfRegistrationLoopBackApi) {
 
     var vm = this;
 
-    //vm.activate = activate;
-    //
-    //activate();
-    //
-    //////////////////
-    //
-    //function activate() {
-    //}
+    vm.currentUser = $rootScope.currentUser;
 
     vm.getWeather = getWeather;
 
@@ -32,7 +25,7 @@
         selfRegistrationLoopBackApi
           .getWeather(vm.currentUser)
           .then(function (weatherData) {
-
+              console.log(weatherData);
           });
       }
 
