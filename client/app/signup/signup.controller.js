@@ -10,7 +10,7 @@
   selfRegistrationLoopBack.$inject =
     ['appSpinner', 'AuthService', 'Subscriber', '$q', '$rootScope', '$state'];
 
-  function SignUpCtrl($state, AuthService) {
+  function SignUpCtrl($rootScope, $state, AuthService) {
 
     var vm = this;
 
@@ -33,6 +33,7 @@
     vm.register = function () {
       AuthService.register(vm.user.username, vm.user.email, vm.user.password)
         .then(function () {
+          $rootScope.$broadcast('userLoggedIn', {});
           $state.transitionTo('home');
         });
     };
@@ -43,6 +44,7 @@
         .then(
         function () {
           vm.clearErrorMessage();
+          $rootScope.$broadcast('userLoggedIn', {});
           $state.go('home');
         },
         function(errorMessage){
@@ -53,9 +55,10 @@
 
   }
 
-  function AuthLogoutCtrl(AuthService, $state) {
+  function AuthLogoutCtrl(AuthService, $rootScope, $state) {
     AuthService.logout()
       .then(function () {
+        $rootScope.$broadcast('userLoggedOut', {});
         $state.go('home');
       });
   }

@@ -60,6 +60,7 @@
           $rootScope.currentUser = {
             id: response.user.id,
             tokenId: response.id,
+            username: response.user.username,
             email: email,
             preferences: response.user.preferences || null
           };

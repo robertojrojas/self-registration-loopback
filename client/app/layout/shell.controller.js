@@ -6,7 +6,6 @@
     ShellCtrl.$inject = ['$rootScope'];
 
     function ShellCtrl($rootScope) {
-        /* jshint validthis:true */
         var vm = this;
 
         vm.showSpinner = false;
@@ -23,9 +22,7 @@
             color: '#428bca'
         };
 
-        activate();
-
-        function activate() { }
+        vm.currentUser = null;
 
         $rootScope.$on('spinner.toggle', function (event, args) {
             vm.showSpinner = args.show;
@@ -33,5 +30,13 @@
                 vm.spinnerMessage = args.message;
             }
         });
+
+      $rootScope.$on('userLoggedIn', function (event, args) {
+        vm.currentUser = $rootScope.currentUser;
+      });
+
+      $rootScope.$on('userLoggedOut', function (event, args) {
+        vm.currentUser = null;
+      });
     }
 })();
