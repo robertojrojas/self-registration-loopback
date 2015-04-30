@@ -32,26 +32,25 @@
 
     vm.register = function () {
       AuthService.register(vm.user.username, vm.user.email, vm.user.password)
-        .then(function () {
-          $rootScope.$broadcast('userLoggedIn', {});
-          $state.transitionTo('home');
-        });
+        .then(success,error);
     };
-
 
     vm.login = function () {
       AuthService.login(vm.user.loginEmail, vm.user.loginPassword)
-        .then(
-        function () {
-          vm.clearErrorMessage();
-          $rootScope.$broadcast('userLoggedIn', {});
-          $state.go('home');
-        },
-        function(errorMessage){
-          console.log(errorMessage);
-          vm.errorMessage = errorMessage.data.error.message;
-        });
+        .then(success,error);
     };
+
+    function success() {
+      $rootScope.$broadcast('userLoggedIn', {});
+      $state.transitionTo('home');
+    }
+
+    function error(errorMessage){
+      console.log(errorMessage);
+      vm.errorMessage = errorMessage.data.error.message;
+    }
+
+
 
   }
 
@@ -62,6 +61,7 @@
         $state.go('home');
       });
   }
+
 
 
 })();

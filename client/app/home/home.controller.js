@@ -18,6 +18,10 @@
 
     vm.getWeather();
 
+    if ($rootScope.currentUser == null) {
+      $state.go('signup');
+    }
+
     function getWeather() {
 
       if (vm.currentUser && vm.currentUser.preferences) {
