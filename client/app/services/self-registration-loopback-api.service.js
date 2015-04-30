@@ -83,7 +83,10 @@
           email: email,
           password: password
         })
-        .$promise;
+        .$promise
+        .then(function (response) {
+           return login(email, password);
+        });;
     }
 
     return {
