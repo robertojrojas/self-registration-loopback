@@ -14,6 +14,7 @@
 
     var vm = this;
 
+
     vm.user = {
       loginEmail: '',
       loginPassword: '',
@@ -23,6 +24,11 @@
       passwordverify: ''
     };
 
+    vm.clearErrorMessage = function() {
+      vm.errorMessage = null;
+    };
+
+    vm.clearErrorMessage();
 
     vm.register = function () {
       AuthService.register(vm.user.username, vm.user.email, vm.user.password)
@@ -34,8 +40,14 @@
 
     vm.login = function () {
       AuthService.login(vm.user.loginEmail, vm.user.loginPassword)
-        .then(function () {
+        .then(
+        function () {
+          vm.clearErrorMessage();
           $state.go('home');
+        },
+        function(errorMessage){
+          console.log(errorMessage);
+          vm.errorMessage = errorMessage.data.error.message;
         });
     };
 
