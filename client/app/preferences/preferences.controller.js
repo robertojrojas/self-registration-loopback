@@ -8,31 +8,21 @@
   selfRegistrationLoopBack.$inject =
     ['appSpinner', 'selfRegistrationLoopBackApi', '$q', '$rootScope', '$state'];
 
-  /* @ngInject */
+
   function PreferencesCtrl($rootScope, selfRegistrationLoopBackApi) {
-    /* jshint validthis: true */
     var vm = this;
 
-    vm.street      = "";
-    vm.city        = "";
-    vm.zipcode     = "";
-    vm.temperature = "";
 
     vm.savePreferences = savePreferences;
-
     vm.currentUser =  $rootScope.currentUser;
 
     function savePreferences() {
-        if (vm.street  !== ""  &&
-            vm.city    !== ""  &&
-            vm.zipcode !== "") {
-
-          vm.currentUser.preferences = {
-             street:      vm.street,
-             city:        vm.city,
-             zipcode:     vm.zipcode,
-             temperature: vm.temperature
-          }
+        if (vm.currentUser.preferences.street  &&
+            vm.currentUser.preferences.street  !== ""  &&
+            vm.currentUser.preferences.city    &&
+            vm.currentUser.preferences.city    !== ""  &&
+            vm.currentUser.preferences.zipcode &&
+            vm.currentUser.preferences.zipcode !== "") {
 
           selfRegistrationLoopBackApi
             .savePreferences(vm.currentUser)

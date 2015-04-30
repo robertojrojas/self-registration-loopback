@@ -8,7 +8,6 @@
   selfRegistrationLoopBack.$inject =
     ['appSpinner', 'selfRegistrationLoopBackApi', '$q', '$rootScope', '$state'];
 
-  /* @ngInject */
   function HomeCtrl($rootScope, $state, selfRegistrationLoopBackApi) {
 
     var vm = this;

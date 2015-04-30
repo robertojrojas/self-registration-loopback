@@ -10,7 +10,6 @@
   selfRegistrationLoopBack.$inject =
     ['appSpinner', 'AuthService', 'Subscriber', '$q', '$rootScope', '$state'];
 
-  /* @ngInject */
   function SignUpCtrl($state, AuthService) {
 
     var vm = this;

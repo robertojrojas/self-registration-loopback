@@ -37,35 +37,14 @@
                id: subscriber.id
              }
         )
-        .$promise
-        .then(function (response) {
-           // get Weather from Response
-        });
+        .$promise;
     }
 
     function savePreferences(subscriber) {
-       Subscriber.findById({id: subscriber.id})
-           .$promise.then(function(savedSubscriber){
-               savedSubscriber.preferences = subscriber.preferences;
-               return savedSubscriber.$upsert();
-           });
+      return Subscriber
+             .upsert(subscriber)
+             .$promise;
 
-
-
-//      return Subscriber
-//             .upsert(subscriber)
-//             .$promise
-//             .then(function(data){
-//                console.log(data);
-//             });
-
-//      return Subscriber
-//            .findById({id: subscriber.id})
-//            .$promise
-//            .then(function(theSubscriber){
-//                theSubscriber.preferences = subscriber.preferences;
-//                theSubscriber.$save();
-//            });
     }
 
 
