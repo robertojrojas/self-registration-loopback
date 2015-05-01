@@ -55,7 +55,8 @@
           },
           "query": {
             "lat": "{lat}",
-            "lon": "{lon}"
+            "lon": "{lon}",
+            "units": "{units}"
           },
           "responsePath": "$.list"
         },

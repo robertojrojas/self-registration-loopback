@@ -17,15 +17,13 @@ module.exports = function(Subscriber) {
         body.preferences.city   &&
         body.preferences.zipcode ) {
 
-      console.log('beforeRemote -- got preferences');
       var loc = body.preferences;
 
       // geo code the address
       lookupGeo(loc.street, loc.city, loc.zipcode,
         function(err, result) {
            if (result && result[0]) {
-            console.log('beforeRemote -- geo is here :)');
-            body.preferences.geo = result[0];
+            body.geo = result[0];
             next();
           } else {
              //TODO: Need to find out how to handle this with better a UX experience
@@ -47,15 +45,17 @@ module.exports = function(Subscriber) {
         return cb(err);
       }
 
-      if (instance && instance.preferences && instance.preferences.geo) {
-        var lat = instance.preferences.geo.lat;
-        var lon = instance.preferences.geo.lng;
+      if (instance && instance.preferences) {
+        var lat = instance.geo.lat;
+        var lon = instance.geo.lng;
+        var units = instance.preferences.temperature;
 
         var openWeatherMap = Subscriber.app.dataSources.openweathermap;
         openWeatherMap.getweather
         (
           lat,
           lon,
+          units,
           function(err, results){
 
             if (err) {

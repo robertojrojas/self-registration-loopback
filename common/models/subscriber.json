@@ -8,6 +8,9 @@
   "properties": {
     "preferences": {
       "type": "object"
+    },
+    "geo": {
+      "type": "geopoint"
     }
   },
   "validations": [],

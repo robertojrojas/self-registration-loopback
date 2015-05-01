@@ -16,6 +16,11 @@
 
     vm.getWeather = getWeather;
 
+
+    vm.temperatureSymbol = temperatureSymbol(vm.currentUser);
+
+    vm.weatherData = null;
+
     vm.getWeather();
 
     if ($rootScope.currentUser == null) {
@@ -28,10 +33,17 @@
         selfRegistrationLoopBackApi
           .getWeather(vm.currentUser)
           .then(function (weatherData) {
-              console.log(weatherData);
+            vm.weatherData = weatherData.weather[0];
           });
       }
+    }
 
+    function temperatureSymbol(currentUser) {
+       if (!currentUser || !currentUser.preferences) {
+         return 'F';
+       }
+       var temperature = currentUser.preferences.temperature || 'imperial';
+       return temperature && temperature === 'imperial' ? "F" : "C";
     }
 
 
