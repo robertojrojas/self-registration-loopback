@@ -48,7 +48,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://api.openweathermap.org/data/2.5/forecast/daily?units=imperial",
+          "url": "http://api.openweathermap.org/data/2.5/forecast/daily",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -63,7 +63,8 @@
         "functions": {
           "getweather": [
             "lat",
-            "lon"
+            "lon",
+            "units"
           ]
         }
       }

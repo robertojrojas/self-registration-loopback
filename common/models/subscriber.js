@@ -61,7 +61,7 @@ module.exports = function(Subscriber) {
             if (err) {
               cb(err);
             } else {
-              console.log(results);
+              //console.log(results);
               cb(null, results);
             }
 

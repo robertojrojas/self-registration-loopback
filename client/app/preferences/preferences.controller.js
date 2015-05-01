@@ -9,7 +9,7 @@
     ['appSpinner', 'selfRegistrationLoopBackApi', '$q', '$rootScope', '$state'];
 
 
-  function PreferencesCtrl($rootScope, selfRegistrationLoopBackApi) {
+  function PreferencesCtrl($rootScope, selfRegistrationLoopBackApi, $state) {
     var vm = this;
 
 
@@ -28,6 +28,8 @@
             .savePreferences(vm.currentUser)
             .then(function(){
                console.log("Preferences saved!");
+               $state.go('home');
+
             });
         }
     }
