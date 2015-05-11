@@ -13,3 +13,5 @@ This application requires MongoDB to be running.
 
 ## Run - Using gulp so it wraps nodemon among other goodies :)
     gulp
+
+![](self-registration-loopback.jpg)
